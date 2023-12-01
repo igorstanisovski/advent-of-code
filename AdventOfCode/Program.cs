@@ -1,4 +1,6 @@
-﻿using AdventOfCode.AdventOfCode2023;
+﻿#region Setup
+
+using AdventOfCode.AdventOfCode2023;
 using AdventOfCode.conf;
 using AdventOfCode.WebAPI;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +15,7 @@ IConfigurationRoot config = new ConfigurationBuilder()
 Settings? settings = config.GetRequiredSection("Settings").Get<Settings>();
 
 APIDataProvider apiDataProvider = new(settings?.Token);
+#endregion
 
 #region AdventOfCodeDay 2023 - Day 1
 AdventOfCodeDay1 adventOfCodeDay1 = new(apiDataProvider);
