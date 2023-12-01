@@ -25,7 +25,8 @@ namespace AdventOfCode.WebAPI
             using var result = await _client.GetAsync($"/{year}/day/{day}/input");
             if (!result.IsSuccessStatusCode)
             {
-                throw new Exception("Something went wrong...");
+                Console.WriteLine("Something went wrong while fetching input data...");
+                return await Task.FromResult<string>(string.Empty);
             }
             return await result.Content.ReadAsStringAsync();
         }
