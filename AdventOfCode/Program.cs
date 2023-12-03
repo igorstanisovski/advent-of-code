@@ -40,3 +40,11 @@ Console.WriteLine(await adventOfCodeDay3.Part1Solution());
 Console.WriteLine("Advent Of Code 2023 Day 3 - Part 2 Solution");
 Console.WriteLine(await adventOfCodeDay3.Part2Solution());
 #endregion
+
+#region AdventOfCodeDay 2023 - Day 4
+AdventOfCodeDay4 adventOfCodeDay4 = new(apiDataProvider);
+Console.WriteLine("Advent Of Code 2023 Day 4 - Part 1 Solution");
+Console.WriteLine(await adventOfCodeDay4.Part1Solution());
+Console.WriteLine("Advent Of Code 2023 Day 4 - Part 2 Solution");
+Console.WriteLine(await adventOfCodeDay4.Part2Solution());
+#endregion
