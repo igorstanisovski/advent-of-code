@@ -3,7 +3,7 @@ using AdventOfCode.Infrastructure.Abstract;
 using AdventOfCode.WebAPI;
 using System.Collections.Generic;
 
-namespace AdventOfCode.AdventOfCode2023
+namespace AdventOfCode.AdventOfCode2023.Day3
 {
     public class AdventOfCodeDay3 : IAdventOfCodeSolution
     {
@@ -17,7 +17,7 @@ namespace AdventOfCode.AdventOfCode2023
             var input = await _apiDataProvider.GetDayInput(2023, 3);
             var inputLines = DataConverter.ConvertStringToStringArray(input, "\n");
             string substring = string.Empty;
-            List<Tuple<int,int>> neighbourhood = new List<Tuple<int, int>>()
+            List<Tuple<int, int>> neighbourhood = new List<Tuple<int, int>>()
             {
                 new Tuple<int, int>(0,-1), // left middle
                 new Tuple<int, int>(0,1), // right middle
@@ -29,18 +29,18 @@ namespace AdventOfCode.AdventOfCode2023
                 new Tuple<int, int>(1,-1), // left down diagonally
             };
             long sum = 0;
-            List<Tuple<int,int>> indexes = new List<Tuple<int,int>>();
-            for(int i = 0; i < inputLines.Length;i++)
+            List<Tuple<int, int>> indexes = new List<Tuple<int, int>>();
+            for (int i = 0; i < inputLines.Length; i++)
             {
                 var line = inputLines[i];
                 for (int j = 0; j < line.Length; j++)
                 {
-                    if (Char.IsDigit(line[j]))
+                    if (char.IsDigit(line[j]))
                     {
                         substring += line[j];
                         indexes.Add(new Tuple<int, int>(i, j));
                     }
-                    if(j == line.Length - 1 || !Char.IsDigit(line[j]))
+                    if (j == line.Length - 1 || !char.IsDigit(line[j]))
                     {
                         bool shouldBreakLoop = false;
                         for (int k = 0; k < indexes.Count; k++)
@@ -60,7 +60,7 @@ namespace AdventOfCode.AdventOfCode2023
                                     // out of boundaries
                                     continue;
                                 }
-                                if (!Char.IsDigit(inputLines[indexI][indexJ]) && inputLines[indexI][indexJ] != '.')
+                                if (!char.IsDigit(inputLines[indexI][indexJ]) && inputLines[indexI][indexJ] != '.')
                                 {
                                     // symbol found
                                     sum += long.Parse(substring);
@@ -94,18 +94,18 @@ namespace AdventOfCode.AdventOfCode2023
             };
             long sum = 0;
             List<Tuple<int, int>> indexes = new List<Tuple<int, int>>();
-            List<Tuple<string,long>> asteriskPositionValue = new List<Tuple<string,long>>();
+            List<Tuple<string, long>> asteriskPositionValue = new List<Tuple<string, long>>();
             for (int i = 0; i < inputLines.Length; i++)
             {
                 var line = inputLines[i];
                 for (int j = 0; j < line.Length; j++)
                 {
-                    if (Char.IsDigit(line[j]))
+                    if (char.IsDigit(line[j]))
                     {
                         substring += line[j];
                         indexes.Add(new Tuple<int, int>(i, j));
                     }
-                    if(j == line.Length - 1 || !Char.IsDigit(line[j]))
+                    if (j == line.Length - 1 || !char.IsDigit(line[j]))
                     {
                         bool shouldBreakLoop = false;
                         for (int k = 0; k < indexes.Count; k++)
@@ -141,9 +141,9 @@ namespace AdventOfCode.AdventOfCode2023
             var groups = asteriskPositionValue.GroupBy(v => v.Item1);
             foreach (var group in groups)
             {
-                if(group.Count() == 2)
+                if (group.Count() == 2)
                 {
-                    sum += (group.ElementAt(0).Item2 * group.ElementAt(1).Item2);
+                    sum += group.ElementAt(0).Item2 * group.ElementAt(1).Item2;
                 }
             }
             return sum.ToString();
